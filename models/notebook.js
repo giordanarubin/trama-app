@@ -1,14 +1,24 @@
 import mongoose from "mongoose";
 import noteSchema from "./note";
 
-const notebookSchema = new mongoose.Schema({
+const NotebookSchema = new mongoose.Schema({
+    ownerUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ownerUser',
+        required: true,
+    },
     title: {
         type: String,
     },
-    note: [noteSchema],
-    tab: {
-        type: String,
-    },
+    //notes: [{
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    ref: 'Notebook',
+    //}],
+    //tab: {
+    //    type: String,
+    //},
+}, {
+    timestamps: true
 });
 
-export default notebookSchema;
+export default mongoose.model('Notebook', NotebookSchema);

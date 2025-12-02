@@ -1,20 +1,29 @@
 import mongoose from "mongoose";
-import notebookSchema from "./notebook";
+import bcrypt from "bcryptjs";
+//import notebookSchema from "./notebook";
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        require: true,
+        required: true,
+        unique: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
+        unique: true,
     },
     password: {
         type: String,
-        require: true,
+        required: true,
+        //unique: true,
     },
-    notebook: [notebookSchema],
+    //notebooks: [{
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    ref: 'Notebook',
+    //}],
+}, {
+    timestamps: true
 });
 
-export default userSchema;
+export default mongoose.model('User', UserSchema);
