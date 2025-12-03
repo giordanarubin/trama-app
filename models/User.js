@@ -16,7 +16,6 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        //unique: true,
     },
     //notebooks: [{
     //    type: mongoose.Schema.Types.ObjectId,

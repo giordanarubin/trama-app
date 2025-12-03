@@ -1,15 +1,24 @@
 import mongoose from "mongoose";
-import noteSchema from "./note";
 
 const NotebookSchema = new mongoose.Schema({
-    ownerUser: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ownerUser',
-        required: true,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
     title: {
-        type: String,
+      type: String,
+      required: true,
     },
+    coverColor: {
+      type: String,
+      default: "#3498db",
+    },
+    //coverPattern: {
+    //  type: String,
+    //  enum: ["solid", "stripes", "dots", "grid"],
+    //  default: "solid",
+    //},
     //notes: [{
     //    type: mongoose.Schema.Types.ObjectId,
     //    ref: 'Notebook',
@@ -17,8 +26,9 @@ const NotebookSchema = new mongoose.Schema({
     //tab: {
     //    type: String,
     //},
-}, {
-    timestamps: true
-});
+  }, {
+    timestamps: true,
+  }
+);
 
 export default mongoose.model('Notebook', NotebookSchema);
