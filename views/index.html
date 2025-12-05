@@ -1,26 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trama</title>
-</head>
-<body>
-    <h2>CADASTRE-SE:</h2>
-    <form id="registerForm">
-        <input type="text" id="registerUsername" placeholder="usuário" required/>
-        <input type="email" id="registerEmail" placeholder="e-mail" required/>
-        <input type="password" id="registerPwd" placeholder="senha" required/>
-        <button type="submit" id="registerBtn">Criar conta</button>
-      </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trama - Cadernos Digitais</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/landingPage.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="trama-logo" href="/">Trama</a>
+        <div class="nav-buttons">
+          <a href="/login" class="btn btn-outline">Entrar</a>
+          <a href="/login" class="btn btn-primary">Cadastrar-se</a>
+        </div>
+      </nav>
+    </header>
 
-    <H2>JÁ TEM CADASTRO? FAÇA LOGIN:</H2>
-    <form id="loginForm">
-        <input type="email" placeholder="e-mail" id="loginEmail" required/>
-        <input type="password" placeholder="senha" id="loginPwd" required/>
-        <button type="submit" id="loginBtn">Entrar</button>
-    </form>
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Organize suas ideias como nunca antes</h1>
+          <p class="subtitle">
+            Trama transforma a maneira como você estuda, planeja e cria.
+            Cadernos digitais personalizáveis que se adaptam ao seu estilo.
+          </p>
+          <div class="cta-buttons">
+            <a href="/login" class="btn btn-primary btn-large"
+              >Quero Começar!</a
+            >
+            <a href="#features" class="btn btn-outline btn-large">Saber Mais</a>
+          </div>
+        </div>
+        <!-- Espaço para futura imagem/screenshot -->
+        <div class="hero-image">
+          <!-- Pode deixar vazio ou colocar um placeholder -->
+          <div class="image-placeholder">📱 💻</div>
+        </div>
+      </section>
 
-    <script src="/js/login.js"></script>
-</body>
+      <!-- FEATURES SECTION -->
+      <section class="features" id="features">
+        <h2 class="section-title">Por que escolher o Trama?</h2>
+        <p class="section-subtitle">
+          Tudo que você precisa para organizar suas ideias
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Personalização Total</h3>
+            <p>
+              Escolha cores, capas e organize por matérias do seu jeito. Cada
+              caderno é único como você.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Acesso em Qualquer Lugar</h3>
+            <p>
+              No computador, tablet ou celular - suas anotações sempre com você,
+              sincronizadas automaticamente.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Busca Inteligente</h3>
+            <p>
+              Encontre qualquer anotação em segundos. Busque por palavras, datas
+              ou categorias.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">☁️</div>
+            <h3>Salvamento Automático</h3>
+            <p>
+              Nunca mais perca uma ideia. Tudo é salvo automaticamente na nuvem,
+              em tempo real.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Trama - Cadernos Digitais • 2025</p>
+      <a class="footer-note" target="_blank" href="https://github.com/giordanarubin/trama-app">github.com/giordanarubin/trama-app</a>
+    </footer>
+  </body>
 </html>

@@ -7,7 +7,7 @@ function loginCheck() {
   try {
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      window.location.href = "/";
+      window.location.href = "/login";
       return;
     }
     if (userId) {
@@ -29,6 +29,7 @@ async function fetchNotebooks(userId) {
       },
     });
     const data = await response.json();
+    console.log("DADOS:", data);
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
@@ -38,12 +39,28 @@ async function fetchNotebooks(userId) {
       showNotebooks(data.notebooks);
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
-};
+}
 
 function showNotebooks(notebooks) {
-
-};
+  try {
+    const container = document.getElementById("notebooksContainer");
+    if (notebooks.length === 0) {
+      console.log("Sem cadernos para mostrar.");
+      container.innerHTML = '<p>Nenhum caderno encontrado. Crie seu primeiro!</p>';
+      return;
+    }
+    notebooks.forEach((notebook) => {
+        const card = document.createElement('div');
+        const title = document.createElement('h4');
+        title.textContent = notebook.title;
+        card.appendChild(title);
+        container.appendChild(card);
+    });
+  } catch (error) {
+        console.log("Erro em showNotebooks:", error);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", startApp);

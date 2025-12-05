@@ -4,40 +4,30 @@ function startApp() {
     registerConfig();
 }
 
-function loginConfig() {
-    console.log('Configurando login...');
-    
-    // 1. Encontra o formulário de login
+function loginConfig() {  
     const loginForm = document.getElementById('loginForm');    
-    // Se não encontrou, para aqui
     if (!loginForm) {
         console.error('Formulário de login não encontrado!');
         return;
     }    
-    // 2. Adiciona "escutador" para quando formulário for enviado
     loginForm.addEventListener('submit', loginExec);
 }
 
 async function loginExec(event) {
-    // Impede comportamento padrão (recarregar página)
-    event.preventDefault();
-    console.log('Iniciando login...');
-    
+    event.preventDefault(); // Impede comportamento padrão (recarregar página)
+    console.log('Iniciando login...');    
     try {
-        // 3. Pega valores dos inputs
+        //Pega valores dos inputs
         const email = document.getElementById('loginEmail').value.trim();
-        const pwd = document.getElementById('loginPwd').value;
-        
-        // 4. Validações básicas
+        const pwd = document.getElementById('loginPwd').value;    
+
+        //Validações básicas
         if (!email || !pwd) {
             alert('Preencha email e senha!');
             return;
         }
         
-        // 5. Mostra que está processando (opcional)
-        console.log('Enviando para API...');
-        
-        // 6. Envia para backend
+        //Envia para backend
         const response = await fetch('/api/login', {
             method: 'POST',
             headers: {
@@ -49,21 +39,15 @@ async function loginExec(event) {
             })
         });
         
-        // 7. Converte resposta para JSON
+        //Converte resposta para JSON
         const data = await response.json();
         console.log('Resposta da API:', data);
         
-        // 8. Verifica se deu certo
         if (data.success) {
-            // Login BEM-SUCEDIDO
-            console.log('Login autorizado!');
-            
             // Guarda informações do usuário
             localStorage.setItem('userId', data.userId);
-            localStorage.setItem('userEmail', data.email);
-            
+            localStorage.setItem('userEmail', data.email);            
             // Redireciona para dashboard
-            console.log('Redirecionando para dashboard...');
             window.location.href = '/dashboard';
             
         } else {
@@ -79,9 +63,7 @@ async function loginExec(event) {
     }
 }
 
-function registerConfig() {
-    console.log('Configurando registro...');
-    
+function registerConfig() {  
     // 1. Encontra o botão de registro
     const registerForm = document.getElementById('registerForm');
     

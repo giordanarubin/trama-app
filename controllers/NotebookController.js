@@ -10,27 +10,27 @@ const getNotebooksByUser = async (req, res) => {
     const userId = req.query.userId;
 
     if (!userId) {
-      console.log("3. ERRO: userId é undefined ou vazio");
+      console.log("ERRO: userId é undefined ou vazio");
       return res.status(400).json({
         success: false,
         message: "UserId é obrigatório. Use: /api/notebooks?userId=SEU_ID",
       });
     }
 
-    console.log("4. Buscando no banco com userId:", userId);
+    console.log("Buscando no banco com userId:", userId);
     const notebooks = await Notebook.find({
       userId: new mongoose.Types.ObjectId(userId)
     });
 
-    console.log("5. Resultado da busca:", notebooks);
-    console.log("6. Número de cadernos encontrados:", notebooks.length);
+    console.log("Resultado da busca:", notebooks);
+    console.log("Número de cadernos encontrados:", notebooks.length);
 
     return res.status(200).json({
       success: true,
       notebooks: notebooks,
     });
   } catch (error) {
-    console.error("7. ERRO na busca:", error);
+    console.error("ERRO na busca:", error);
     return res.status(500).json({
       success: false,
       message: "Erro ao buscar cadernos"
