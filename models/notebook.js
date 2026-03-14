@@ -8,12 +8,19 @@ const NotebookSchema = new mongoose.Schema({
     },
     title: {
       type: String,
-      required: true,
+      required: [true, "Título é obrigatório"],
+      trim: true,
+      maxlength: [50, "Título muito longo"]
     },
     coverColor: {
       type: String,
       default: "#3498db",
     },
+    description: {
+      type: String,
+      maxlength: [200, "Descrição muito longa"],
+      default: ""
+    }
     //coverPattern: {
     //  type: String,
     //  enum: ["solid", "stripes", "dots", "grid"],

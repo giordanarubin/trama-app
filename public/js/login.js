@@ -88,9 +88,12 @@ async function registerExec(event) {
         const pwd = document.getElementById('registerPwd').value;
         
         // 4. VALIDAÇÕES (frontend)
-        // 4.1 Campos obrigatórios
         if (!username || !email || !pwd) {
             alert('Preencha todos os campos!');
+            return;
+        }
+        if (pwd.length < 6) {
+            alert('A senha deve ter pelo menos 6 caracteres!');
             return;
         }
         

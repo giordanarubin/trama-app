@@ -1,31 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Trama</title>  
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Trama</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/dashboard.css" />  
-</head>
-<body>
-    <header>
-      <nav>
-        <a class="trama-logo" href="/">Trama</a>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+
+  <body class="dashboard-page">
+    <header class="dashboard-header">
+      <nav class="dashboard-nav">
+        <a href="/" class="trama-logo">Trama</a>
+        <div class="user-info">
+          <span class="user-greeting">Olá, <span id="userName"></span>!</span>
+          <button class="logout-btn" id="logoutBtn">Sair</button>
+        </div>
       </nav>
     </header>
 
-    <main>
-        <h2>Meus cadernos</h2>
-        <div id="notebooksContainer">
-
-        </div>
+    <main class="dashboard-main">
+      <h1 class="dashboard-title">Meus Cadernos</h1>
+      <div id="notebooksContainer" class="notebooks-grid">
+        <!-- Cadernos serão inseridos aqui pelo JavaScript -->
+      </div>
     </main>
 
-    <footer>
-      <p>Trama - Cadernos Digitais • 2025</p>
-      <a class="footer-note" target="_blank" href="https://github.com/giordanarubin/trama-app">github.com/giordanarubin/trama-app</a>
-    </footer>
-    
+    <!-- Modal para criar novo caderno -->
+    <div id="notebookModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Criar Novo Caderno</h2>
+        <form
+          id="notebookForm"
+          onsubmit="
+            event.preventDefault();
+            createNotebook();
+          "
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              id="notebookTitle"
+              placeholder="Título do caderno"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="notebookDescription"
+              placeholder="Descrição (opcional)"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label>Cor da capa:</label>
+            <div class="color-options">
+              <div
+                class="color-option selected"
+                data-color="#F5AAA0"
+                style="background-color: #f5aaa0"
+              ></div>
+              <div
+                class="color-option"
+                data-color="#F9D273"
+                style="background-color: #f9d273"
+              ></div>
+              <div
+                class="color-option"
+                data-color="#BBE2DF"
+                style="background-color: #bbe2df"
+              ></div>
+              <div
+                class="color-option"
+                data-color="#313A54"
+                style="background-color: #313a54"
+              ></div>
+              <div
+                class="color-option"
+                data-color="#EFEFEF"
+                style="background-color: #efefef"
+              ></div>
+            </div>
+          </div>
+          <button type="submit" class="login-btn" style="width: 100%">
+            Criar Caderno
+          </button>
+        </form>
+      </div>
+    </div>
+
     <script src="/js/dashboard.js"></script>
-</body>
+  </body>
 </html>

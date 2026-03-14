@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 connectToDb();
 
@@ -32,6 +32,10 @@ app.get('/login', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
     res.sendFile(join(__dirname, 'views', 'dashboard.html'));
+});
+
+app.get('/notebook', (req, res) => {
+    res.sendFile(join(__dirname, 'views', 'notebook.html'));
 });
 
 //rotas da API depois

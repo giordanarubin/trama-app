@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/login.css" />
   </head>
+
   <body>
     <header>
       <nav>
@@ -15,43 +16,36 @@
     </header>
 
     <main>
-      <div id="form-container">
-
-        <div class="form-section">
-          <h2>CADASTRE-SE:</h2>
-          <form id="registerForm" class="form">
-            <input
-              type="text"
-              id="registerUsername"
-              placeholder="usuário"
-              required
-            />
-            <input
-              type="email"
-              id="registerEmail"
-              placeholder="e-mail"
-              required
-            />
-            <input
-              type="password"
-              id="registerPwd"
-              placeholder="senha"
-              required
-            />
-            <button type="submit" id="registerBtn">Criar conta</button>
-          </form>
-        </div>
-
-        <div class="form-section">
-          <h2>JÁ TEM CADASTRO? FAÇA LOGIN:</h2>
-          <form id="loginForm" class="form">
-            <input type="email" placeholder="e-mail" id="loginEmail" required />
-            <input type="password" placeholder="senha" id="loginPwd" required />
-            <button type="submit" id="loginBtn">Entrar</button>
-          </form>
-        </div>
-        
+      <div class="login-form-section">
+        <h2>📝 CADASTRE-SE</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <input type="text" id="registerUsername" placeholder="Nome de usuário" required minlength="3"/>
+          </div>
+          <div class="form-group">
+            <input type="email" id="registerEmail" placeholder="E-mail" required/>
+          </div>
+          <div class="form-group">
+            <input type="password" id="registerPwd" placeholder="Senha (mínimo 6 caracteres)" required minlength="6"/>
+          </div>
+          <button type="submit" class="register-btn">Criar conta</button>
+        </form>
       </div>
+
+      
+      <div class="login-form-section">
+        <h2>🔐 JÁ TENHO CONTA</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <input type="email" placeholder="E-mail" id="loginEmail" required/>
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Senha" id="loginPwd" required/>
+          </div>
+          <button type="submit" class="login-btn">Entrar</button>
+        </form>
+      </div>
+    </div>
     </main>
 
     <footer>

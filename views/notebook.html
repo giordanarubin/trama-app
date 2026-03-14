@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caderno - Trama</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/notebook.css" />
+  </head>
+  <body class="notebook-page">
+    <header class="dashboard-header">
+      <nav class="dashboard-nav">
+        <a href="/dashboard" class="trama-logo">Trama</a>
+        <div class="user-info">
+          <span class="user-greeting">Olá, <span id="userName"></span>!</span>
+          <button class="logout-btn" id="logoutBtn">Sair</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="notebook-main">
+      <!-- Cabeçalho do caderno -->
+      <div class="notebook-header">
+        <div class="notebook-info">
+          <h1 id="notebookTitle"></h1>
+          <p id="notebookDescription"></p>
+        </div>
+        <div class="notebook-actions">
+          <button class="btn btn-primary" onclick="openCreateNoteModal()">
+            + Nova Nota
+          </button>
+          <button class="btn btn-outline" onclick="toggleSearch()">
+            🔍 Buscar
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de busca (inicialmente oculta) -->
+      <div id="searchBar" class="search-bar hidden">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Buscar notas..."
+          oninput="searchNotes()"
+        />
+        <button onclick="clearSearch()">Limpar</button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="notes-filters">
+        <button class="filter-btn active" onclick="filterNotes('all')">
+          Todas
+        </button>
+        <button class="filter-btn" onclick="filterNotes('favorites')">
+          ⭐ Favoritas
+        </button>
+      </div>
+
+      <!-- Grid de notas -->
+      <div id="notesContainer" class="notes-grid">
+        <!-- Notas serão inseridas aqui -->
+      </div>
+    </main>
+
+    <!-- MODAL CRIAR/EDITAR NOTA -->
+    <div id="noteModal" class="modal">
+      <div class="modal-content modal-large">
+        <span class="close-modal" onclick="closeNoteModal()">&times;</span>
+        <h2 id="modalTitle">Nova Nota</h2>
+        <form
+          id="noteForm"
+          onsubmit="
+            event.preventDefault();
+            saveNote();
+          "
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              id="noteTitle"
+              placeholder="Título da nota"
+              required
+              maxlength="100"
+            />
+          </div>
+
+          <!-- Editor de texto rico -->
+          <div class="form-group">
+            <div class="editor-toolbar">
+              <button type="button" onclick="formatText('bold')">
+                <b>B</b>
+              </button>
+              <button type="button" onclick="formatText('italic')">
+                <i>I</i>
+              </button>
+              <button type="button" onclick="formatText('underline')">
+                <u>U</u>
+              </button>
+              <button type="button" onclick="formatText('h2')">Título</button>
+              <button type="button" onclick="insertList()">• Lista</button>
+            </div>
+            <div
+              id="noteContent"
+              class="rich-editor"
+              contenteditable="true"
+              placeholder="Escreva sua nota aqui..."
+            ></div>
+          </div>
+
+          <!-- Opções adicionais -->
+          <div class="form-row">
+            <div class="form-group color-picker">
+              <label>Cor da nota:</label>
+              <div class="color-options">
+                <div
+                  class="color-option selected"
+                  data-color="#FFFFFF"
+                  style="background-color: #ffffff; border: 1px solid #ddd"
+                ></div>
+                <div
+                  class="color-option"
+                  data-color="#FFF9C4"
+                  style="background-color: #fff9c4"
+                ></div>
+                <div
+                  class="color-option"
+                  data-color="#FFCDD2"
+                  style="background-color: #ffcdd2"
+                ></div>
+                <div
+                  class="color-option"
+                  data-color="#C8E6C9"
+                  style="background-color: #c8e6c9"
+                ></div>
+                <div
+                  class="color-option"
+                  data-color="#BBDEFB"
+                  style="background-color: #bbdefb"
+                ></div>
+              </div>
+            </div>
+
+            <div class="form-group tags-input">
+              <label>Tags (separadas por vírgula):</label>
+              <input
+                type="text"
+                id="noteTags"
+                placeholder="ex: estudo, importante"
+              />
+            </div>
+          </div>
+
+          <div class="form-checkbox">
+            <label>
+              <input type="checkbox" id="noteFavorite" /> Marcar como favorita
+            </label>
+          </div>
+
+          <input type="hidden" id="noteId" />
+          <input type="hidden" id="noteNotebookId" />
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeNoteModal()"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Salvar Nota</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL VISUALIZAR NOTA -->
+    <div id="viewNoteModal" class="modal">
+      <div class="modal-content modal-large">
+        <span class="close-modal" onclick="closeViewModal()">&times;</span>
+        <div class="view-note-header">
+          <h2 id="viewNoteTitle"></h2>
+          <div class="view-note-actions">
+            <button class="btn-icon" onclick="editCurrentNote()">✏️</button>
+            <button class="btn-icon" onclick="deleteCurrentNote()">🗑️</button>
+          </div>
+        </div>
+        <div class="view-note-tags" id="viewNoteTags"></div>
+        <div class="view-note-content" id="viewNoteContent"></div>
+        <div class="view-note-footer">
+          <span id="viewNoteDate"></span>
+          <span id="viewNoteFavorite" class="favorite-badge">⭐ Favorita</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/notebook.js"></script>
+  </body>
+</html>
