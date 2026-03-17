@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* =============== RESET E BASE =============== */
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +46,7 @@ nav {
 /* Logo Trama */
 .trama-logo {
     position: relative;
-    font-family: 'Shantell', serif;
+    font-family: 'Shantell Sans', cursive;
     font-size: 1.8rem;
     font-weight: bold;
     color: #313A54;
@@ -60,8 +59,8 @@ nav {
 .trama-logo::before {
     content: "✎";
     color: #F9D273;
-    transform: rotate(25deg);
-    font-size: 1.4em;
+    transform: rotate(10deg);
+    font-size: 1.2em;
 }
 
 .trama-logo::after {
@@ -153,110 +152,13 @@ footer {
     color: #BBE2DF;
 }
 
-/* =============== PÁGINA LOGIN =============== */
-.login-page {
-    background: linear-gradient(135deg, #EFEFEF 0%, #BBE2DF 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.login-container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(49, 58, 84, 0.15);
-    padding: 2rem;
-    width: 100%;
-    max-width: 500px;
-}
-
-@media (min-width: 768px) {
-    .login-container {
-        padding: 3rem;
+@media (max-width: 480px) {
+    .trama-logo {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
     }
 }
-
-.login-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.login-header .trama-logo {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.login-header p {
-    color: #313A54;
-    opacity: 0.7;
-}
-
-.login-form-section {
-    margin-bottom: 2.5rem;
-}
-
-.login-form-section h2 {
-    color: #313A54;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px dashed #BBE2DF;
-    font-size: 1.3rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid #EFEFEF;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: #F9F9F9;
-    color: #313A54;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #F5AAA0;
-    box-shadow: 0 0 0 3px rgba(245, 170, 160, 0.2);
-    background-color: white;
-}
-
-.login-btn, .register-btn {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
-}
-
-.login-btn {
-    background-color: #F5AAA0;
-    color: #313A54;
-}
-
-.login-btn:hover {
-    background-color: #F9D273;
-    transform: translateY(-2px);
-}
-
-.register-btn {
-    background-color: transparent;
-    color: #313A54;
-    border: 2px solid #BBE2DF;
-}
-
-.register-btn:hover {
-    background-color: rgba(187, 226, 223, 0.2);
-    border-color: #313A54;
-}
-
