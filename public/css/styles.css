@@ -137,6 +137,17 @@ nav {
     border-color: #313A54;
 }
 
+@media (max-width: 480px) {
+    .trama-logo {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
 /* =============== FOOTER =============== */
 footer {
     background-color: #313A54;
@@ -150,15 +161,4 @@ footer {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #BBE2DF;
-}
-
-@media (max-width: 480px) {
-    .trama-logo {
-        font-size: 1.5rem;
-    }
-    
-    .btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.9rem;
-    }
 }
